@@ -1,0 +1,140 @@
+---
+
+# 🚀 Intrusion Detection on UNSW-NB15 Dataset
+
+This project implements and compares multiple machine learning models for intrusion detection using the **UNSW-NB15 dataset**. The goal is to evaluate the performance of traditional ML and ensemble models in detecting malicious and normal traffic.
+
+---
+
+## 📂 Dataset
+
+We use the **UNSW-NB15 training and testing sets**:
+
+* **Training set:** `UNSW_NB15_training-set.csv`
+* **Testing set:** `UNSW_NB15_testing-set.csv`
+
+The dataset contains labeled network traffic samples with **normal (0)** and **attack (1)** classes.
+
+---
+
+## ⚙️ Models Implemented
+
+The following models were trained and evaluated:
+
+1. **Logistic Regression**
+2. **Random Forest**
+3. **Isolation Forest (Anomaly Detection)**
+4. **XGBoost**
+5. **AdaBoost**
+
+Each model was evaluated based on **accuracy, precision, recall, F1-score, and training/prediction time**.
+
+---
+
+## 📊 Results
+
+### Logistic Regression
+
+* ✅ Accuracy: **0.9063**
+* ⏳ Training Time: **26.43s**
+* ⏳ Prediction Time: **0.037s**
+* Performs well, but slightly lower recall for class 0 (normal traffic).
+
+---
+
+### Random Forest
+
+* ✅ Accuracy: **0.9770**
+* ⏳ Training Time: **59.45s**
+* ⏳ Prediction Time: **1.08s**
+* Balanced performance with high precision and recall for both classes.
+
+---
+
+### Isolation Forest
+
+* ✅ Accuracy: **0.3580**
+* ⏳ Training Time: **1.82s**
+* ⏳ Prediction Time: **0.355s**
+* Poor performance due to unsupervised nature; fails to generalize well.
+
+---
+
+### XGBoost
+
+* ✅ Accuracy: **0.9877**
+* ⏳ Training Time: **13.74s**
+* ⏳ Prediction Time: **0.215s**
+* Best performing model with excellent precision, recall, and F1-scores.
+
+---
+
+### AdaBoost
+
+* ✅ Accuracy: **0.9576**
+* ⏳ Training Time: **107.02s**
+* ⏳ Prediction Time: **2.02s**
+* Strong performance but slower compared to Random Forest and XGBoost.
+
+---
+
+### Cross-Validation (Random Forest)
+
+* CV Scores: `[0.854, 0.927, 0.868, 0.973, 0.752]`
+* Mean CV Score: **0.8748**
+* Indicates good generalization with some variance across folds.
+
+---
+
+## ✅ Key Insights
+
+* **XGBoost** outperforms all models with \~98.8% accuracy and balanced metrics.
+* **Random Forest** is a strong alternative with \~97.7% accuracy.
+* **Logistic Regression** provides a good baseline with \~90.6% accuracy.
+* **Isolation Forest** is not suitable for this dataset.
+* **AdaBoost** performs well but at the cost of longer training and prediction times.
+
+---
+
+## 🛠️ Technologies Used
+
+* Python 3.12
+* Scikit-learn
+* XGBoost
+* Pandas, NumPy
+* Matplotlib (for visualization, optional)
+
+---
+
+## 📌 How to Run
+
+1. Clone this repository:
+
+   ```bash
+   git clone <repo-link>
+   cd intrusion-detection-unsw
+   ```
+2. Install dependencies:
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+3. Run the notebook or script:
+
+   ```bash
+   python intrusion_detection.py
+   ```
+
+---
+
+## 📈 Future Work
+
+* Experiment with **deep learning models (LSTMs, Autoencoders)** for temporal features.
+* Perform **feature engineering and selection** to reduce dimensionality.
+* Deploy best model as an **API for real-time intrusion detection**.
+
+---
+
+## 👨‍💻 Author
+
+* Developed by **\[Jinit Yadav]**
